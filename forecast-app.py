@@ -8,6 +8,11 @@ from sklearn.pipeline import make_pipeline
 import plotly.graph_objs as go
 from datetime import datetime, timedelta
 
+# Set page config
+apptitle = 'Air Passenger Forecast'
+
+st.set_page_config(page_title=apptitle, layout='wide')
+
 # Load the AirPassengers dataset
 @st.cache_data
 def load_data():
