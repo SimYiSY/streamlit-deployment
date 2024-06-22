@@ -5,7 +5,8 @@ command
 ## for forecasting model
 ```sh
 streamlit run forecast-app.py
-
+```
 ## for ML model
 ```sh
 streamlit run app.py
+```
