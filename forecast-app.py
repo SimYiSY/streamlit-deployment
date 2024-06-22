@@ -7,6 +7,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 import plotly.graph_objs as go
 from datetime import datetime, timedelta
+# Suppress SettingWithCopyWarning
+pd.options.mode.chained_assignment = None
 
 # Set page config
 apptitle = 'Air Passenger Forecast'
@@ -23,7 +25,7 @@ def load_data():
 data = load_data()
 
 # Convert Date format to year-month-day
-data['Date'] = data.index.strftime('%Y-%m-%d')
+data.loc[:, 'Date'] = data.index.strftime('%Y-%m-%d')
 
 # Streamlit app
 st.title('Air Passengers Forecasting with SVR and Plotly')
@@ -114,7 +116,7 @@ st.plotly_chart(fig_forecast)
 
 # Display forecasted values
 st.subheader('Forecasted Values')
-forecast_df['Date'] = forecast_df.index.strftime('%Y-%m-%d')
+forecast_df.loc[:, 'Date'] = forecast_df.index.strftime('%Y-%m-%d')
 show_data = forecast_df.copy()
 show_data.index = show_data['Date']
 show_data = show_data.drop("Date", axis = 1)
